@@ -16,10 +16,13 @@ from core.lib.utils import *
 from core.constants import *
 import json
 from core.lib.thirdparty.simhash import Simhash
+from datetime import datetime
 
 class Request(object):
 
+
 	def __init__(self, type, method, url, parent=None, referer=None, data=None, trigger=None, json_cookies=None, set_cookie=None, http_auth=None, db_id=None, parent_db_id=None, out_of_scope=None, extra_headers=None):
+		self.request_time = datetime.utcnow()
 		self.type = type
 		self.method = method
 		self._html = None

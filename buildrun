@@ -1,0 +1,1 @@
+docker build -t test1 . && docker rm -f htcaptest1 &&  docker run -v $(pwd)/src/WORKSPACE/DATAVOL:/var/app/DATAVOL  --name htcaptest1 test1

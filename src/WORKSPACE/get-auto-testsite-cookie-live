@@ -1,0 +1,23 @@
+
+cookie=$(curl -i 'https://autotestsite.marketingautomation.services/auth/isAuthorized?callback=jQuery111005540661447379513_1561480938441'  | grep 'sid=' | cut -d' ' -f2  )  \
+
+
+
+
+curl -i 'https://autotestsite.marketingautomation.services/auth/isAuthorized?callback=jQuery111005540661447379513_1561480938441' \
+-b $cookie \
+-H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' \
+-H 'accept: text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01' -H 'referer: https://autotestsite.marketingautomation.services/' \
+-H 'authority: autotestsite.marketingautomation.services' -H 'x-requested-with: XMLHttpRequest' \
+--data 'emailAddress=autotestsite2%40sharpspring.com&password=autotestsite2AAA1&g-recaptcha-response=' --compressed | grep 'sid=' | cut -d' ' -f2  2>/dev/null
+
+
+
+curl -i --silent 'https://autotestsite.marketingautomation.services/auth/authenticate' \
+-b "$cookie"  \
+-H 'authority: autotestsite.marketingautomation.services' -H 'cache-control: max-age=0' -H 'origin: https://autotestsite.marketingautomation.services' \
+-H 'upgrade-insecure-requests: 1' -H 'content-type: application/x-www-form-urlencoded' \
+-H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' -H 'referer: https://autotestsite.marketingautomation.services/' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+--data 'username=autotestsite2%40sharpspring.com&password=autotestsite2AAA1&g-recaptcha-response=&r=&login=1' --compressed
+
+echo $cookie | sed 's/;//g'

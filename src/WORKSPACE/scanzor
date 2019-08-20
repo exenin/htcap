@@ -1,0 +1,22 @@
+#domain="app.sharpspring.localhost.com"
+domain="autotestsite.marketingautomation.services"
+data="/var/app/DATAVOL"
+DB="sharpspringlocal.db"
+datadb="$data/$DB"
+
+cookie=$(bash get-auto-testsite-cookie-live | grep sid=)
+
+ python ../htcap.py crawl -m active \
+     -c "$cookie" \
+      $domain \
+$datadb
+
+
+
+
+
+scanners="arachni native sqlmap wapiti"
+scanner="native"
+#for scanner in $scanners;do
+    python ../htcap.py scan $scanner $datadb
+#done

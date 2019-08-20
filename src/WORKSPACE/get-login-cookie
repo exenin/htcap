@@ -1,0 +1,12 @@
+cookie=$(curl --silent -Ik https://app.sharpspring.localhost.com/ | grep sid= | cut -d' ' -f2| cut -d';' -f1)
+
+
+silent1=$(curl --silent -k 'https://app.sharpspring.localhost.com/auth/isAuthorized?callback=jQuery111007607936608657948_1561476381766' \
+-b $cookie  \
+-H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' -H 'accept: text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01' -H 'referer: https://app.sharpspring.localhost.com/' -H 'authority: app.sharpspring.localhost.com' -H 'x-requested-with: XMLHttpRequest' --data 'emailAddress=admin%40sharpspring.com&password=sharpspring' --compressed --insecure 2>/dev/null)
+
+$(curl --silent -k 'http://app.sharpspring.localhost.com/auth/authenticate' -b "$cookie" -H 'Connection: keep-alive' -H 'Cache-Control: max-age=0' -H 'Upgrade-Insecure-Requests: 1' -H 'Origin: null' -H 'Content-Type: application/x-www-form-urlencoded' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: en-GB,en-US;q=0.9,en;q=0.8' -H 'Cookie: un=admin%40sharpspring.com; _hjIncludedInSample=1;' --data 'username=admin%40sharpspring.com&password=sharpspring&r=&login=1' --compressed --insecure 2>/dev/null)
+
+
+
+echo $cookie

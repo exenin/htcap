@@ -1,0 +1,6 @@
+
+
+
+scanners="arachni ck401 native repeater sqlmap wapiti"
+scanzor="arachni"
+python htcap.py scan $scanzor sharpspringlive.db
